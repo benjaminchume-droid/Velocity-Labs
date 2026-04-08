@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Emperor's Place — Victoria Island, Lagos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:       #1e6b22;
+  --green-mid:   #2E7D32;
+  --green-light: #3a9140;
+  --green-dark:  #134d16;
+  --gold:        #FFD600;
+  --gold-hover:  #e6c400;
+  --brown:       #8B5E3C;
+  --white:       #ffffff;
+  --off-white:   #f7f9f5;
+  --light-grey:  #f0f2ee;
+  --border:      #dde3d8;
+  --text:        #1a1a1a;
+  --text-mid:    #444444;
+  --text-soft:   #777777;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;overflow-x:hidden}
+
+/* PAGES */
+.page{display:none;animation:fadeUp 0.45s ease both}
+.page.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:200;background:#fff;border-bottom:1.5px solid var(--border);padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(0,0,0,0.06)}
+.logo{display:flex;align-items:center;gap:.65rem;cursor:pointer;flex-shrink:0}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--green-mid),var(--green-light));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;box-shadow:0 2px 10px rgba(46,125,50,.35)}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;line-height:1.1;color:var(--green-mid);letter-spacing:.01em}
+.logo-text span{display:block;font-size:.68rem;font-weight:400;color:var(--brown);letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif}
+nav{display:flex;align-items:center;gap:0}
+nav a{font-size:.79rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid);padding:.55rem .85rem;border-radius:6px;cursor:pointer;transition:color .2s,background .2s;text-decoration:none}
+nav a:hover{color:var(--green-mid);background:rgba(46,125,50,.07)}
+nav a.active{color:var(--green-mid);font-weight:600}
+.btn-header-order{background:var(--gold);color:var(--text);border:none;border-radius:8px;padding:.6rem 1.3rem;font-size:.79rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 2px 12px rgba(255,214,0,.4);white-space:nowrap}
+.btn-header-order:hover{background:var(--gold-hover);transform:translateY(-1px);box-shadow:0 4px 18px rgba(255,214,0,.55)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;display:block}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;z-index:199;background:#fff;border-bottom:1.5px solid var(--border);flex-direction:column;padding:1rem 2rem 1.5rem;gap:.15rem;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid);padding:.75rem .5rem;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none;transition:color .2s}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--green-mid)}
+.mobile-nav .btn-header-order{margin-top:1rem;text-align:center;display:block}
+
+main{padding-top:68px}
+
+/* HERO */
+.hero{background:linear-gradient(155deg,#1a5c1e 0%,var(--green-mid) 45%,#3a9140 100%);min-height:calc(100vh - 68px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:4rem 2rem}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(0,0,0,.2) 0%,transparent 50%),radial-gradient(ellipse at 90% 15%,rgba(255,255,255,.04) 0%,transparent 45%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.35rem 1.1rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:1.75rem;animation:fadeUp .6s .1s both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,7vw,5.5rem);font-weight:900;line-height:1.08;letter-spacing:-.02em;color:#fff;animation:fadeUp .7s .2s both}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--gold)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.25rem);color:rgba(255,255,255,.78);max-width:500px;margin:1.25rem auto 2.5rem;line-height:1.65;animation:fadeUp .7s .32s both}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .44s both}
+.btn-gold{background:var(--gold);color:var(--text);border:none;border-radius:10px;padding:1rem 2.2rem;font-size:.92rem;font-weight:700;letter-spacing:.04em;cursor:pointer;text-decoration:none;transition:all .22s;box-shadow:0 4px 20px rgba(255,214,0,.45);display:inline-flex;align-items:center;gap:.5rem}
+.btn-gold:hover{background:var(--gold-hover);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,214,0,.55)}
+.btn-ghost-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:10px;padding:1rem 2.2rem;font-size:.92rem;font-weight:600;letter-spacing:.04em;cursor:pointer;text-decoration:none;transition:all .22s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-ghost-white:hover{background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px)}
+.hero-loc{margin-top:2.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.55);letter-spacing:.05em;animation:fadeUp .7s .56s both}
+.hero-loc::before{content:'📍'}
+.scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeUp .7s .8s both}
+.scroll-cue span{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.scroll-arrow{width:1px;height:42px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollPulse 1.6s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* SECTIONS */
+section{padding:5.5rem 2rem}
+.container{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--green-mid);font-weight:600;display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem}
+.section-eyebrow::before{content:'';flex:0 0 24px;height:2px;background:var(--gold);border-radius:2px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:700;line-height:1.1;color:var(--text);letter-spacing:-.01em}
+.section-title em{font-style:italic;font-weight:400;color:var(--green-mid)}
+.section-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text-soft);line-height:1.7;margin-top:.75rem}
+
+/* FEATURES */
+.features{background:var(--off-white);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);border-radius:16px;overflow:hidden}
+.feature-card{background:#fff;padding:2.75rem 2rem;text-align:center;transition:background .25s}
+.feature-card:hover{background:rgba(46,125,50,.04)}
+.feature-icon{width:66px;height:66px;background:linear-gradient(135deg,rgba(46,125,50,.12),rgba(46,125,50,.06));border:2px solid rgba(46,125,50,.18);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;font-size:1.9rem;transition:transform .3s,box-shadow .3s}
+.feature-card:hover .feature-icon{transform:scale(1.08) rotate(3deg);box-shadow:0 6px 20px rgba(46,125,50,.15)}
+.feature-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.65rem}
+.feature-desc{font-size:.88rem;color:var(--text-soft);line-height:1.75}
+
+/* DISHES */
+.dishes{background:#fff}
+.dishes-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:3rem}
+.dishes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.dish-card{border-radius:16px;overflow:hidden;border:1.5px solid var(--border);background:#fff;transition:transform .3s,box-shadow .3s;position:relative}
+.dish-card:hover{transform:translateY(-7px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.dish-emoji{height:170px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.dish-bg-1{background:linear-gradient(135deg,#d9ead3,#b6d7a8)}
+.dish-bg-2{background:linear-gradient(135deg,#cfe2f3,#a4c2f4)}
+.dish-bg-3{background:linear-gradient(135deg,#fff2cc,#ffe599)}
+.dish-bg-4{background:linear-gradient(135deg,#f4cccc,#ea9999)}
+.dish-info{padding:1.3rem}
+.dish-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.dish-desc{font-size:.8rem;color:var(--text-soft);line-height:1.5;margin-bottom:.9rem}
+.dish-price{font-size:1rem;font-weight:700;color:var(--green-mid);font-family:'Playfair Display',serif}
+.dish-tag{position:absolute;top:.7rem;left:.7rem;background:var(--green-mid);color:#fff;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .55rem;border-radius:4px;font-weight:600}
+.btn-link-green{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:var(--green-mid);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-bottom:2px solid var(--gold);padding-bottom:2px;transition:color .2s,border-color .2s}
+.btn-link-green:hover{color:var(--green-dark);border-color:var(--green-mid)}
+
+/* BTNS */
+.btn-green{background:var(--green-mid);color:#fff;border:none;border-radius:10px;padding:.95rem 2rem;font-size:.88rem;font-weight:600;letter-spacing:.04em;cursor:pointer;text-decoration:none;transition:all .22s;box-shadow:0 4px 16px rgba(46,125,50,.3);display:inline-flex;align-items:center;gap:.45rem}
+.btn-green:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,125,50,.4)}
+.btn-outline-green{background:transparent;color:var(--green-mid);border:2px solid var(--green-mid);border-radius:10px;padding:.93rem 2rem;font-size:.88rem;font-weight:600;letter-spacing:.04em;cursor:pointer;text-decoration:none;transition:all .22s;display:inline-flex;align-items:center;gap:.45rem}
+.btn-outline-green:hover{background:var(--green-mid);color:#fff;transform:translateY(-2px)}
+
+/* LOUNGE */
+.lounge{background:var(--off-white);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border)}
+.lounge-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.lounge-visual{background:linear-gradient(135deg,#1a5c1e,var(--green-mid));border-radius:24px;aspect-ratio:.9;display:grid;grid-template-columns:1fr 1fr;place-items:center;font-size:4rem;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(46,125,50,.25)}
+.lounge-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%,rgba(255,214,0,.12),transparent 60%)}
+.lounge-visual span{position:relative;z-index:1}
+.lounge-features{list-style:none;margin:1.75rem 0 2rem;display:flex;flex-direction:column;gap:.85rem}
+.lounge-features li{display:flex;align-items:center;gap:.75rem;font-size:.93rem;color:var(--text-mid);line-height:1.5}
+.lounge-features li::before{content:'✦';color:var(--gold);font-size:.6rem;flex-shrink:0;width:20px;height:20px;background:rgba(255,214,0,.12);border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* CTA BAND */
+.cta-band{background:linear-gradient(135deg,#1a5c1e 0%,var(--green-mid) 55%,#3a9140 100%);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;position:relative;z-index:1}
+.cta-band h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+.cta-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:rgba(255,255,255,.75);margin:.75rem auto 2.25rem;max-width:520px;position:relative;z-index:1}
+.cta-band .hero-ctas{position:relative;z-index:1}
+.cta-info{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;position:relative;z-index:1;font-size:.8rem;color:rgba(255,255,255,.5);letter-spacing:.05em}
+.cta-info span{display:flex;align-items:center;gap:.4rem}
+
+/* SOCIAL PROOF */
+.social-proof{padding:4.5rem 2rem;text-align:center;border-bottom:1.5px solid var(--border)}
+.social-proof > p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text-soft);margin:.6rem 0 1.75rem}
+.social-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-instagram{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;border:none;border-radius:10px;padding:.8rem 1.6rem;font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-whatsapp{background:#25D366;color:#fff;border:none;border-radius:10px;padding:.8rem 1.6rem;font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-instagram:hover,.btn-whatsapp:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+
+/* FOOTER */
+footer{background:#1a5c1e;color:rgba(255,255,255,.85);padding:4rem 2rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr 1fr;gap:2.5rem;max-width:1200px;margin:0 auto 3rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:.85rem}
+.footer-desc{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.75}
+.footer-col h4{font-family:'Playfair Display',serif;font-size:.9rem;color:#fff;margin-bottom:1.1rem;letter-spacing:.04em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.footer-col ul li,.footer-col ul li a{font-size:.82rem;color:rgba(255,255,255,.5);cursor:pointer;transition:color .2s;text-decoration:none;line-height:1.5}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-hr{max-width:1200px;margin:0 auto;border:none;border-top:1px solid rgba(255,255,255,.1)}
+.footer-bottom{max-width:1200px;margin:1.5rem auto 0;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:.75rem}
+
+/* INNER PAGES */
+.page-hero{background:linear-gradient(155deg,#1a5c1e,var(--green-mid));padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
+.page-hero .section-eyebrow{justify-content:center;color:rgba(255,255,255,.7);position:relative;z-index:1}
+.page-hero .section-eyebrow::before{background:var(--gold);opacity:.7}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,5vw,3.8rem);font-weight:900;color:#fff;position:relative;z-index:1}
+.page-hero h1 em{font-style:italic;color:var(--gold);font-weight:400}
+.page-hero > p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.65);margin-top:.6rem;position:relative;z-index:1}
+.info-box{background:rgba(46,125,50,.06);border:2px solid rgba(46,125,50,.18);border-radius:16px;padding:2.5rem;max-width:680px;margin:4rem auto;text-align:center}
+.info-box p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:1100px;margin:4rem auto;padding:0 2rem}
+.menu-cat-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:2rem;text-align:center;transition:all .3s;cursor:pointer}
+.menu-cat-card:hover{border-color:var(--green-mid);background:rgba(46,125,50,.04);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.menu-cat-card .emoji{font-size:2.6rem;display:block;margin-bottom:.9rem}
+.menu-cat-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.menu-cat-card p{font-size:.8rem;color:var(--text-soft);line-height:1.55}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:5rem auto;padding:0 2rem}
+.about-visual{background:linear-gradient(135deg,#1a5c1e,var(--green-mid));border-radius:24px;aspect-ratio:.88;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;font-size:3.5rem;box-shadow:0 20px 60px rgba(46,125,50,.2);position:relative;overflow:hidden}
+.about-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,214,0,.1),transparent 60%)}
+.about-visual span{position:relative;z-index:1}
+.about-visual .est{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.2em;color:rgba(255,255,255,.5);font-size:.9rem}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.stat{background:var(--off-white);border:1.5px solid var(--border);border-radius:12px;padding:1.4rem;text-align:center}
+.stat-number{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--green-mid)}
+.stat-label{font-size:.72rem;color:var(--text-soft);letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem}
+
+/* CONTACT */
+.contact-section{max-width:960px;margin:0 auto;padding:4rem 2rem}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-bottom:3rem}
+.contact-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;display:flex;gap:1.1rem;align-items:flex-start;transition:border-color .25s,box-shadow .25s}
+.contact-card:hover{border-color:var(--green-mid);box-shadow:0 8px 28px rgba(46,125,50,.1)}
+.contact-icon{font-size:1.6rem;flex-shrink:0;width:48px;height:48px;background:rgba(46,125,50,.08);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.contact-card h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.contact-card p,.contact-card a{font-size:.83rem;color:var(--text-soft);line-height:1.6;text-decoration:none}
+.contact-card a:hover{color:var(--green-mid)}
+.map-box{background:var(--light-grey);border:1.5px solid var(--border);border-radius:14px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;margin-bottom:3rem}
+.map-box p{font-size:.82rem;color:var(--text-soft);letter-spacing:.07em;text-transform:uppercase}
+
+/* GALLERY */
+.gallery-section{max-width:1100px;margin:4rem auto;padding:0 2rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:220px 220px;gap:1rem}
+.gallery-cell{border-radius:14px;overflow:hidden;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;transition:transform .3s,box-shadow .3s;cursor:pointer}
+.gallery-cell:hover{transform:scale(1.03);z-index:2;box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.gallery-cell:nth-child(1){background:linear-gradient(135deg,#d9ead3,#a2c28b)}
+.gallery-cell:nth-child(2){grid-column:2;grid-row:1/3;background:linear-gradient(160deg,#1e6b22,#3a9140);font-size:5rem}
+.gallery-cell:nth-child(3){background:linear-gradient(135deg,#fff2cc,#f6c828)}
+.gallery-cell:nth-child(4){background:linear-gradient(135deg,#cfe2f3,#7bafd4)}
+.gallery-cell:nth-child(5){background:linear-gradient(135deg,#f4cccc,#c97b7b)}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:.85rem;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);transform:translateY(100%);transition:transform .25s}
+.gallery-cell:hover .gallery-caption{transform:translateY(0)}
+
+/* RESERVATIONS */
+.res-section{max-width:1100px;margin:4rem auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.res-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.res-feature{background:var(--off-white);border:1.5px solid var(--border);border-radius:12px;padding:1.25rem}
+.res-feature .icon{font-size:1.4rem;margin-bottom:.4rem;display:block}
+.res-feature h4{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.res-feature p{font-size:.77rem;color:var(--text-soft);line-height:1.5}
+.res-book-box{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:2.5rem;box-shadow:0 8px 40px rgba(0,0,0,.06)}
+.res-book-box h3{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.res-book-box > p{font-size:.85rem;color:var(--text-soft);line-height:1.65;margin-bottom:1.75rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin-bottom:.35rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--off-white);border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green-mid);box-shadow:0 0 0 3px rgba(46,125,50,.1)}
+.form-group textarea{resize:vertical;min-height:85px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.why-us-section{max-width:1100px;margin:3rem auto 5rem;padding:0 2rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.why-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}
+.why-card:hover{border-color:var(--green-mid);transform:translateY(-4px);box-shadow:0 10px 30px rgba(46,125,50,.1)}
+.why-icon{font-size:1.9rem;margin-bottom:.9rem}
+.why-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.why-card p{font-size:.82rem;color:var(--text-soft);line-height:1.65}
+
+/* RESPONSIVE */
+@media(max-width:960px){nav{display:none}.hamburger{display:flex}.features-grid{grid-template-columns:1fr}.dishes-grid{grid-template-columns:repeat(2,1fr)}.lounge-grid{grid-template-columns:1fr;gap:3rem}.lounge-visual{max-width:380px;margin:0 auto}.footer-grid{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.res-section{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.menu-grid{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gallery-cell:nth-child(2){grid-row:auto;font-size:3.5rem}}
+@media(max-width:600px){.dishes-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.res-features{grid-template-columns:1fr}.menu-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}.gallery-cell{height:180px}.form-row{grid-template-columns:1fr}.hero-ctas{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo" onclick="navigate('home')">
+    <div class="logo-icon">👑</div>
+    <div class="logo-text">The Emperor's Place<span>Victoria Island · Lagos</span></div>
+  </div>
+  <nav>
+    <a onclick="navigate('home')" id="nav-home" class="active">Home</a>
+    <a onclick="navigate('menu')" id="nav-menu">Menu</a>
+    <a onclick="navigate('about')" id="nav-about">About</a>
+    <a onclick="navigate('gallery')" id="nav-gallery">Gallery</a>
+    <a onclick="navigate('contact')" id="nav-contact">Contact</a>
+    <a onclick="navigate('reservations')" id="nav-reservations">Reservations</a>
+  </nav>
+  <a href="https://wa.me/2348135019956" class="btn-header-order" target="_blank">Order Now →</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="navigate('home');closeMobile()">Home</a>
+  <a onclick="navigate('menu');closeMobile()">Menu</a>
+  <a onclick="navigate('about');closeMobile()">About</a>
+  <a onclick="navigate('gallery');closeMobile()">Gallery</a>
+  <a onclick="navigate('contact');closeMobile()">Contact</a>
+  <a onclick="navigate('reservations');closeMobile()">Reservations</a>
+  <a href="https://wa.me/2348135019956" class="btn-header-order" target="_blank" style="text-align:center;display:block;margin-top:.5rem">📲 Order Now on WhatsApp</a>
+</div>
+
+<main>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🍽 Lagos' Premier Dining & Lounge</div>
+      <h1>Welcome to<br>The <em>Emperor's</em><br>Place</h1>
+      <p class="hero-sub">Authentic flavours, royal ambiance, and an unforgettable experience — crafted for those who accept nothing less than excellence, right in the heart of Victoria Island.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/2348135019956" class="btn-gold" target="_blank">Order Now →</a>
+        <a class="btn-ghost-white" onclick="navigate('reservations')">Book a Table</a>
+      </div>
+      <div class="hero-loc">32b Ologun Agbaje Street, Victoria Island, Lagos</div>
+    </div>
+    <div class="scroll-cue"><span>Scroll</span><div class="scroll-arrow"></div></div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div style="text-align:center;max-width:500px;margin:0 auto">
+        <div class="section-eyebrow" style="justify-content:center">Why Choose Us</div>
+        <h2 class="section-title">Excellence in <em>Every Detail</em></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👨‍🍳</div>
+          <div class="feature-title">Expert Chefs</div>
+          <p class="feature-desc">Culinary masters crafting authentic Nigerian dishes and continental favourites with decades of artistry and passion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍹</div>
+          <div class="feature-title">Premium Beverages</div>
+          <p class="feature-desc">Fresh smoothies, artisanal cocktails, premium spirits, wines, and inventive mocktails — a curated bar experience.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">Perfect Ambiance</div>
+          <p class="feature-desc">Warm lighting, soulful music, and refined interiors designed to make every visit feel like a special occasion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dishes">
+    <div class="container">
+      <div class="dishes-header">
+        <div>
+          <div class="section-eyebrow">Signature Dishes</div>
+          <h2 class="section-title">Royal <em>Favourites</em></h2>
+          <p class="section-desc">Handpicked from our kitchen — crafted to perfection daily.</p>
+        </div>
+        <a class="btn-link-green" onclick="navigate('menu')">View Full Menu →</a>
+      </div>
+      <div class="dishes-grid">
+        <div class="dish-card">
+          <div class="dish-tag">Chef's Pick</div>
+          <div class="dish-emoji dish-bg-1">🍚</div>
+          <div class="dish-info">
+            <div class="dish-name">Firewood Jollof Rice</div>
+            <p class="dish-desc">Smoky, aromatic jollof cooked over open firewood. Served with your choice of protein.</p>
+            <div class="dish-price">₦3,500</div>
+          </div>
+        </div>
+        <div class="dish-card">
+          <div class="dish-emoji dish-bg-2">🦐</div>
+          <div class="dish-info">
+            <div class="dish-name">Seafood Pepper Soup</div>
+            <p class="dish-desc">Fragrant broth loaded with tiger prawns, fresh fish, and periwinkle. A true delicacy.</p>
+            <div class="dish-price">₦4,200</div>
+          </div>
+        </div>
+        <div class="dish-card">
+          <div class="dish-emoji dish-bg-3">🍍</div>
+          <div class="dish-info">
+            <div class="dish-name">Pina Colada Smoothie</div>
+            <p class="dish-desc">Tropical blend of fresh pineapple, coconut cream, and a hint of lime. Refreshingly perfect.</p>
+            <div class="dish-price">₦1,800</div>
+          </div>
+        </div>
+        <div class="dish-card">
+          <div class="dish-tag">Popular</div>
+          <div class="dish-emoji dish-bg-4">🍸</div>
+          <div class="dish-info">
+            <div class="dish-name">Signature Cocktails</div>
+            <p class="dish-desc">House-crafted cocktails blending premium spirits with exotic fruits, herbs, and artisanal syrups.</p>
+            <div class="dish-price">₦3,000+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lounge">
+    <div class="container">
+      <div class="lounge-grid">
+        <div class="lounge-visual">
+          <span>🕯</span><span>🥂</span><span>🎶</span><span>🌿</span>
+        </div>
+        <div>
+          <div class="section-eyebrow">The Lounge Experience</div>
+          <h2 class="section-title">Dine, Drink &<br><em>Unwind</em></h2>
+          <p class="section-desc">Beyond a restaurant — we're a premium lounge destination where business meets pleasure and celebrations become memories.</p>
+          <ul class="lounge-features">
+            <li>Private dining spaces for intimate gatherings</li>
+            <li>Live DJ nights and curated music events</li>
+            <li>Full-service bar open until late</li>
+            <li>Corporate event hosting & VIP packages</li>
+          </ul>
+          <a class="btn-green" onclick="navigate('reservations')">Plan Your Event →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="section-eyebrow" style="justify-content:center;color:rgba(255,255,255,.6);margin-bottom:.5rem">Ready to Visit?</div>
+    <h2>Ready to Experience <em>Excellence?</em></h2>
+    <p>Reserve your table or reach out on WhatsApp for instant service.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/2348135019956" class="btn-gold" target="_blank">📲 Chat on WhatsApp</a>
+      <a class="btn-ghost-white" onclick="navigate('contact')">Contact Us</a>
+    </div>
+    <div class="cta-info">
+      <span>📍 32b Ologun Agbaje Street, Victoria Island, Lagos</span>
+      <span>·</span>
+      <span>📞 08135019956</span>
+      <span>·</span>
+      <span>🕐 Open Daily</span>
+    </div>
+  </div>
+
+  <section class="social-proof">
+    <div class="section-eyebrow" style="justify-content:center;margin-bottom:.4rem">Stay Connected</div>
+    <h3 class="section-title" style="font-size:1.75rem">Follow Our Journey</h3>
+    <p>Daily specials, behind-the-scenes moments, and guest highlights.</p>
+    <div class="social-btns">
+      <a href="https://instagram.com" class="btn-instagram" target="_blank">📸 Follow on Instagram</a>
+      <a href="https://wa.me/2348135019956" class="btn-whatsapp" target="_blank">💬 Message on WhatsApp</a>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+
+<!-- MENU -->
+<div id="page-menu" class="page">
+  <div class="page-hero">
+    <div class="section-eyebrow">What We Serve</div>
+    <h1>Our <em>Menu</em></h1>
+    <p>A royal spread crafted fresh daily</p>
+  </div>
+  <div style="text-align:center;padding:4rem 2rem 0">
+    <div class="section-eyebrow" style="justify-content:center">Browse Categories</div>
+    <h2 class="section-title" style="font-size:2rem">Explore the <em>Kitchen</em></h2>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-cat-card"><span class="emoji">🍚</span><h3>Rice & Swallows</h3><p>Jollof, fried rice, fufu, pounded yam, eba and more traditional staples</p></div>
+    <div class="menu-cat-card"><span class="emoji">🍖</span><h3>Proteins & Grills</h3><p>Suya, peppered chicken, goat meat, assorted, fish and more to choose from</p></div>
+    <div class="menu-cat-card"><span class="emoji">🥘</span><h3>Soups & Stews</h3><p>Egusi, bitterleaf, ogbono, oha, afang, and authentic pepper soups</p></div>
+    <div class="menu-cat-card"><span class="emoji">🍹</span><h3>Smoothies & Juices</h3><p>Fresh tropical blends, immune boosters and vitamin-packed daily specials</p></div>
+    <div class="menu-cat-card"><span class="emoji">🍸</span><h3>Cocktails & Spirits</h3><p>Signature cocktails, premium spirits, wine and mocktails for every taste</p></div>
+    <div class="menu-cat-card"><span class="emoji">🍰</span><h3>Desserts & Pastries</h3><p>House-made cakes, chin chin, puff puff and indulgent sweet finales</p></div>
+  </div>
+  <div class="info-box">
+    <p>Want to explore the full menu or ask about daily specials? Our team is ready to assist you instantly on WhatsApp.</p>
+    <a href="https://wa.me/2348135019956" class="btn-green" target="_blank">📲 Chat for Menu Details</a>
+  </div>
+</div>
+
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="page-hero">
+    <div class="section-eyebrow">Our Story</div>
+    <h1>About <em>Us</em></h1>
+    <p>The story behind Lagos' royal dining destination</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-visual">
+      <span>👑</span>
+      <span class="est">EST. 2020</span>
+      <span>🌿🕯🍽</span>
+    </div>
+    <div>
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">Born from <em>Passion</em></h2>
+      <p class="section-desc" style="margin-bottom:1.25rem">The Emperor's Place was founded with a single vision: to create a dining and lounge experience that honours Nigerian heritage while embracing modern luxury.</p>
+      <p style="font-size:.88rem;color:var(--text-mid);line-height:1.8;margin-bottom:.9rem">Every detail — from our carefully sourced ingredients to our curated ambiance — reflects our commitment to excellence. We believe that a great meal is more than sustenance; it's a ceremony.</p>
+      <p style="font-size:.88rem;color:var(--text-mid);line-height:1.8;margin-bottom:2rem">Located at 32b Ologun Agbaje Street, Victoria Island, we have become a destination for those who seek quality, warmth, and an unforgettable experience with every visit.</p>
+      <a href="https://wa.me/2348135019956" class="btn-green" target="_blank">📲 Learn More on WhatsApp</a>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Guests / Month</div></div>
+        <div class="stat"><div class="stat-number">30+</div><div class="stat-label">Menu Items</div></div>
+        <div class="stat"><div class="stat-number">5★</div><div class="stat-label">Rating</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-band">
+    <h2>Come Experience It <em>Yourself</em></h2>
+    <p>No description does justice to what awaits you. Come see for yourself.</p>
+    <div class="hero-ctas">
+      <a class="btn-gold" onclick="navigate('reservations')">Reserve a Table</a>
+      <a class="btn-ghost-white" onclick="navigate('contact')">Get Directions</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- GALLERY -->
+<div id="page-gallery" class="page">
+  <div class="page-hero">
+    <div class="section-eyebrow">Visual Journey</div>
+    <h1>Our <em>Gallery</em></h1>
+    <p>A glimpse into the world of The Emperor's Place</p>
+  </div>
+  <div class="gallery-section">
+    <div class="gallery-grid">
+      <div class="gallery-cell">🍚<div class="gallery-caption">Firewood Jollof Rice</div></div>
+      <div class="gallery-cell">👑<div class="gallery-caption">The Dining Hall</div></div>
+      <div class="gallery-cell">🦐<div class="gallery-caption">Seafood Selection</div></div>
+      <div class="gallery-cell">🍸<div class="gallery-caption">Cocktail Bar</div></div>
+      <div class="gallery-cell">🎶<div class="gallery-caption">Evening Lounge</div></div>
+    </div>
+  </div>
+  <div class="info-box">
+    <p>Our full photo gallery is coming soon. Follow us on Instagram for daily moments, specials, and behind-the-scenes content from our kitchen and lounge.</p>
+    <a href="https://instagram.com" class="btn-instagram" style="display:inline-flex" target="_blank">📸 Follow on Instagram</a>
+  </div>
+</div>
+
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="section-eyebrow">Reach Us</div>
+    <h1>Get in <em>Touch</em></h1>
+    <p>We'd love to hear from you</p>
+  </div>
+  <div class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-card"><div class="contact-icon">📍</div><div><h3>Our Location</h3><p>32b Ologun Agbaje Street<br>Victoria Island, Lagos, Nigeria</p></div></div>
+      <div class="contact-card"><div class="contact-icon">📞</div><div><h3>Phone</h3><p><a href="tel:+2348135019956">08135019956</a><br>Available during business hours</p></div></div>
+      <div class="contact-card"><div class="contact-icon">✉️</div><div><h3>Email</h3><p>info@theemperorsplace.com<br>We reply within 24 hours</p></div></div>
+      <div class="contact-card"><div class="contact-icon">💬</div><div><h3>WhatsApp</h3><p><a href="https://wa.me/2348135019956" target="_blank">Chat with us instantly →</a><br>Fastest way to reach us</p></div></div>
+    </div>
+    <div class="map-box">
+      <span style="font-size:2.5rem">🗺</span>
+      <p>32b Ologun Agbaje Street, Victoria Island, Lagos</p>
+      <a href="https://maps.google.com/?q=32b+Ologun+Agbaje+Street+Victoria+Island+Lagos" class="btn-outline-green" target="_blank" style="font-size:.8rem;padding:.6rem 1.2rem;margin-top:.5rem">Open in Google Maps →</a>
+    </div>
+    <div class="info-box">
+      <p>For the quickest response, reach us via WhatsApp. Whether it's about our menu, a reservation, or planning a private event — we're just a message away.</p>
+      <a href="https://wa.me/2348135019956" class="btn-green" target="_blank">📲 Open WhatsApp Chat</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- RESERVATIONS -->
+<div id="page-reservations" class="page">
+  <div class="page-hero">
+    <div class="section-eyebrow">Reserve Your Seat</div>
+    <h1>Book a <em>Table</em></h1>
+    <p>Secure your royal dining experience</p>
+  </div>
+  <div class="res-section">
+    <div>
+      <div class="section-eyebrow">Why Book With Us</div>
+      <h2 class="section-title" style="font-size:2rem">Your Table,<br><em>Your Rules</em></h2>
+      <p class="section-desc" style="margin-bottom:.5rem">Every reservation is treated with care. Tell us your preferences and we'll handle the rest.</p>
+      <div class="res-features">
+        <div class="res-feature"><span class="icon">📅</span><h4>Flexible Dates</h4><p>Book any day at your preferred time</p></div>
+        <div class="res-feature"><span class="icon">👥</span><h4>Group Friendly</h4><p>Intimate tables or large private events</p></div>
+        <div class="res-feature"><span class="icon">⚡</span><h4>Quick Booking</h4><p>Instant confirmation via WhatsApp</p></div>
+        <div class="res-feature"><span class="icon">⭐</span><h4>Special Requests</h4><p>Décor, menus, surprises — handled</p></div>
+      </div>
+      <a href="https://wa.me/2348135019956?text=Hello%2C%20I'd%20like%20to%20make%20a%20reservation%20at%20The%20Emperor's%20Place%2C%20Victoria%20Island%20Lagos" class="btn-gold" target="_blank">📲 Book Instantly via WhatsApp</a>
+    </div>
+    <div class="res-book-box">
+      <h3>Reserve a Table</h3>
+      <p>Fill in your details and we'll confirm your booking promptly.</p>
+      <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="08XXXXXXXXX"></div>
+      <div class="form-row">
+        <div class="form-group"><label>Date</label><input type="date"></div>
+        <div class="form-group"><label>Time</label><input type="time"></div>
+      </div>
+      <div class="form-group"><label>Number of Guests</label>
+        <select><option>1 – 2 Guests</option><option>3 – 5 Guests</option><option>6 – 10 Guests</option><option>10+ Guests (Private Event)</option></select>
+      </div>
+      <div class="form-group"><label>Special Requests</label><textarea placeholder="Occasion, dietary needs, décor preferences…"></textarea></div>
+      <button class="btn-green" style="width:100%;justify-content:center;margin-top:.25rem" onclick="submitReservation()">Send Reservation Request →</button>
+    </div>
+  </div>
+  <div class="why-us-section">
+    <h2 class="section-title" style="font-size:1.9rem;margin-bottom:2rem;text-align:center">Why Choose <em>Us</em></h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🏆</div><h4>Premium Quality</h4><p>From ingredients to service, every detail is held to the highest standard. Excellence is our baseline.</p></div>
+      <div class="why-card"><div class="why-icon">💎</div><h4>Luxury Atmosphere</h4><p>Step into a world of refined comfort. Our interiors and ambiance are designed to make you feel like royalty.</p></div>
+      <div class="why-card"><div class="why-icon">❤️</div><h4>Heartfelt Hospitality</h4><p>Our team treats every guest like a VIP. We go the extra mile — always.</p></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">The Emperor's Place</div>
+      <p class="footer-desc">A premium dining and lounge destination at Victoria Island, Lagos — where every visit is a royal experience crafted for those who accept nothing less than excellence.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="navigate('home')">Home</a></li>
+        <li><a onclick="navigate('menu')">Menu</a></li>
+        <li><a onclick="navigate('about')">About Us</a></li>
+        <li><a onclick="navigate('gallery')">Gallery</a></li>
+        <li><a onclick="navigate('reservations')">Reservations</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li>📍 32b Ologun Agbaje Street</li>
+        <li>Victoria Island, Lagos</li>
+        <li>📞 <a href="tel:+2348135019956">08135019956</a></li>
+        <li>✉ info@theemperorsplace.com</li>
+        <li>🕐 Open Daily</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://instagram.com" target="_blank">📸 Instagram</a></li>
+        <li><a href="https://wa.me/2348135019956" target="_blank">💬 WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-hr">
+  <div class="footer-bottom">
+    <span>© 2025 The Emperor's Place · Victoria Island, Lagos. All rights reserved.</span>
+    <span>Crafted with ❤ in Lagos</span>
+  </div>
+</footer>
+
+<script>
+const pages=['home','menu','about','gallery','contact','reservations'];
+function navigate(page){
+  pages.forEach(p=>{
+    const el=document.getElementById('page-'+p);
+    const nav=document.getElementById('nav-'+p);
+    if(el)el.classList.toggle('active',p===page);
+    if(nav)nav.classList.toggle('active',p===page);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleMobile(){
+  document.getElementById('mobileNav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeMobile(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  const nav=document.getElementById('mobileNav');
+  const btn=document.getElementById('hamburger');
+  if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target))closeMobile();
+});
+function submitReservation(){
+  const inputs=document.querySelectorAll('.res-book-box input,.res-book-box select,.res-book-box textarea');
+  const[name,phone,date,time,guests,notes]=[...inputs].map(i=>i.value||'Not provided');
+  const msg=encodeURIComponent(
+    `Hello, I'd like to make a reservation at The Emperor's Place, Victoria Island Lagos.\n\n`+
+    `Name: ${name}\nPhone: ${phone}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nNotes: ${notes}`
+  );
+  window.open(`https://wa.me/2348135019956?text=${msg}`,'_blank');
+}
+</script>
+</body>
+</html>
