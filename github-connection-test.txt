@@ -1,0 +1,2 @@
+GitHub connection test commit.
+Created to verify repository write access.
